@@ -8,8 +8,6 @@ Design and write a program, when given:
   Goal: Identify the most similar language, by Comparing the "Original" Document
   to the Skeptical document.
 
-**Priorities** Find a Partner Before Monday, 11/20/17! *Found Partner!*
-
 # First... What small problems do I need to solve?
     • Recognize {"Language Text"} as {"The Language."}
     • If "Voulez-vous" = French.
@@ -21,17 +19,17 @@ making a window of three starting at position 0, iterate through the string.
 then...
 Trigram Frequency Vectors
 
-
-
-# Note
-
-switch()
+# Functions...
+Switch()
 Compare()
-main()
+Main()
 
-Libraries Needed.
+# Libraries Needed...
+<cstdlib>
+<iostream>
+<fstream>
+<vector>
 <string>
-fstream
 
-Compile script
+#Compile script
 Languages.cpp and Trigram.cpp?
