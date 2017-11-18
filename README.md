@@ -10,8 +10,8 @@ Design and write a program, when given:
 
 # First... What small problems do I need to solve?
     • Recognize {"Language Text"} as {"The Language."}
-    • If "Voulez-vous" = French.
-    • If "Would you want to be with me?" = English.
+    • If "Aimeriez-vous prendre un verre?" = French.
+    • If "Would you like a drink?" = English.
 
 So~... we want to take a string of characters,
 then using trigrams, all 26 letters +1 (to include spaces) = 27.
