@@ -13,19 +13,23 @@ Design and write a program, when given:
     • If "Aimeriez-vous prendre un verre?" = French.
     • If "Would you like a drink?" = English.
 
-So~... we want to take a line, then take them string by string
-then using trigrams, all 26 letters +1 (to include spaces) = 27.
-making a window of three starting at position 0, iterate through the string.
-then if certain characters in the string match then string = Language.
-most likely do that recursively.
+We want this program to read through a txt file,
+Using trigrams, making a window of three characters {Letters and Spaces},
+iterate through the file.
+
+If certain Word matches a language characteristic then the Text file is "Language."
+a word matches the characteristic of "English" then it is English.
+
+
 Trigram Frequency Vectors
+Similar to DNA sequencing we just need to include spaces in between.
 
 # Functions we could potentially use
 Switch()
 Compare()
 Main()
 
-# Libraries Needed...
+# Libraries Needed
 <cstdlib>
 <iostream>
 <fstream>
