@@ -15,14 +15,15 @@ std::string trans(std::string seq) {
 
   }
   return result;
-}
 
-std::vector<std::string> newseq;
-for(unsigned long i = 0; i<= seq.length(); i ++){
-  //Makes trigram the size of 3
-  tri += seq[i];
-  tri += seq[i+1];
-  tri += seq[i+2];
+
+  std::vector<std::string> newseq;
+  for(unsigned long i = 0; i<= seq.length(); i ++){
+    //Makes the trigram
+    tri += seq[i];
+    tri += seq[i+1];
+    tri += seq[i+2];
+  }
 
   std::cout << tri << std::endl;
 
@@ -115,4 +116,4 @@ for(unsigned long i = 0; i<= seq.length(); i ++){
     break;
     }
       //Find the new Sequence
-             else {
+       else {}

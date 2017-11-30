@@ -8,6 +8,9 @@ using namespace std;
 
 string revcomp(string seq);
 int main(int argc, char *argv[]) {
+  if (argc != 2){
+    std::cerr << "NOT ENOUGHT VALUES" << '\n';
+  }
   ifstream infile(argv[1]);
 	if (!infile.fail()){
     string line;
