@@ -10,7 +10,9 @@ std::string trans(std::string seq) {
 
 	for (int i = 0; i < (int) seq.length() - 2; i+=3) {
 		std::string tri = seq.substr(i,3);
-    //tri code 
+
+    //tri code
+
   }
   return result;
 }
