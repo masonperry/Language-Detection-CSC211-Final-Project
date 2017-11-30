@@ -1,25 +1,32 @@
 #include <iostream>
+#include <ostream>
 #include <string>
 #include <cstdlib>
 #include <vector>
 #include <fstream>
 
-
 std::string trans(std::string seq) {
   std::string result;
+
 	for (int i = 0; i < (int) seq.length() - 2; i+=3) {
 		std::string tri = seq.substr(i,3);
 
+    //tri code
+
+  }
+  return result;
 
 
-std::vector<std::string> newseq;
-for(unsigned long i = 0; i<= seq.length(); i ++){
-  //Makes trigram the size of 3
-  string tri = [];
-  tri += seq[i];
-  tri += seq[i+1];
-  tri += seq[i+2];
-  std::cout<< tri << endl;
+  std::vector<std::string> newseq;
+  for(unsigned long i = 0; i<= seq.length(); i ++){
+    //Makes the trigram
+    tri += seq[i];
+    tri += seq[i+1];
+    tri += seq[i+2];
+  }
+
+  std::cout << tri << std::endl;
+
   if (tri.length() < 3){
     for(int j = 0; j < tri.length(); j++ ){
       if (j[i] == " "){
@@ -109,8 +116,7 @@ for(unsigned long i = 0; i<= seq.length(); i ++){
     //returns new sequence if the length of trigram is shorter than three
     return newSeq;
   }
-}
     break;
     }
       //Find the new Sequence
-             else{
+       else {}
