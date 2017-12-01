@@ -7,12 +7,9 @@
 
 std::string trans(std::string seq) {
   std::string result;
-
 	for (int i = 0; i < (int) seq.length() - 2; i+=3) {
 		std::string tri = seq.substr(i,3);
-
     //tri code
-
   }
   return result;
 
