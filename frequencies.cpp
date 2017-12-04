@@ -8,7 +8,6 @@
 
 int Index(std::string tri){
   int arr[19683] = {0};
-  std::string i;
     arr[i] += 1;
   return arr;
 }
