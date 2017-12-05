@@ -13,8 +13,8 @@ using namespace std;
 //Function for finding the frequencies
 vector<int> frequencies(std::string seq){
 
-  std::vector<int> miniVec(19682);
-  for(unsigned int x = 0; x <= (unsigned int) seq.length()-2; x ++){
+  std::vector<int> miniVec(19683);
+  for(unsigned int x = 0; x < (unsigned int) seq.length()-2; x ++){
     int tri = 0;
     //check for spaces.
     if (seq[x] == 32){
@@ -31,13 +31,15 @@ vector<int> frequencies(std::string seq){
       seq[x+2]= 96;
     }
 
-    //checks the trigram to find tge index value
+    //checks the trigram to find the index value
     else{
-      tri += ((seq[x] - 96) * (pow)(27,2));
-      tri += ((seq[x+1] - 96) * 27);
-      tri += (seq[x+2] - 96);
+      tri += int ((seq[x] - 96) * (pow)(27,2));
+      tri += int ((seq[x+1] - 96) * 27);
+      tri += int (seq[x+2] - 96);
     }
+    cout<<"tri: "<<tri<<" ";
     miniVec[tri]+=1;
+    cout<<miniVec[tri];
   }
   //Returns the vector at the end of the Function
   return miniVec;
