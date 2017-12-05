@@ -44,9 +44,15 @@ void frequencies(std::string seq){
   for(vec, ,  )
 
 
-int main(){
-
-  std::string str = "zzz";
-  //std::cout << Vec;
-  return 0;
+int main(int argc, char *argv[]){
+  if(argc != 2){
+    std::cerr << "Please provide a string to test for trigrams" <<endl;
+    exit(EXIT_FAILURE)
+  }
+  else{
+    std::string str = argv[1];
+    frequencies(str);
+    std::cout << Vec << endl;
+    return 0
+  }
 }
