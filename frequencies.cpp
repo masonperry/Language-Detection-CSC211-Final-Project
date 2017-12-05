@@ -7,14 +7,14 @@
 #include <cmath>
 
 int Index(std::string tri){
-  int arr[19683] = {0};
-    arr[i] += 1;
-  return arr;
+  int array[19683] = {0};
+    array[i] += 1;
+  return 0;
 }
 
-std::string trans(std::string seq){
+std::string frequencies(std::string seq){
   std::vector<std::string> newseq;
-  std::string tri = []
+  std::string tri = [array]
   for(unsigned j = 0; j<= (int) seq.length(); j++){
     //Makes the trigram, while checking frequencies.
     tri += seq[j]-96;

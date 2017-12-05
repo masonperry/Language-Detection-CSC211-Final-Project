@@ -3,32 +3,12 @@
 #include <cstdlib>
 #include <vector>
 #include <fstream>
+#include "frequencies.cpp"
 
 using namespace std;
 
-string revcomp(string seq);
-int main(int argc, char *argv[]) {
-  if (argc != 2){
-    std::cerr << "NOT ENOUGHT VALUES" << '\n';
-  }
-  ifstream infile(argv[1]);
-	if (!infile.fail()){
-    string line;
-		vector<string> myVec;
-		getline(infile,line);
-		std::cout << line << endl;
-
-    while (getline(infile, line)) {
-        // do something with the line
-				myVec.push_back(line);
-		}
-		for (int i = (int)myVec.size()-1; i >= 0; i--){
-			std::cout<< revcomp(myVec[i]) << endl;
-		}
-    infile.close();
-  }
-  else {
-    cerr << "Could not open file " << argv[1] << endl;
-    exit(EXIT_FAILURE);
-	}
+int main(){
+  std::string str = "   ";
+    frequencies(str);
+  return 0;
 }
