@@ -20,6 +20,8 @@ Trigram Frequency Vectors
 
 We just need to include spaces in between.
 
+remember to put argc back in main.
+
 # Functions we could potentially use
   Switch()
   - Won't work with trigrams but wanted to think about other ways, to identify
