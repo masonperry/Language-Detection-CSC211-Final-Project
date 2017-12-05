@@ -41,9 +41,9 @@ void frequencies(std::string seq){
     index(tri, Vec);
   }
 }
-  for(vec, ,  )
 
 
+<<<<<<< Updated upstream
 int main(int argc, char *argv[]){
   if(argc != 2){
     std::cerr << "Please provide a string to test for trigrams" <<endl;
@@ -55,4 +55,14 @@ int main(int argc, char *argv[]){
     std::cout << Vec << endl;
     return 0
   }
+=======
+
+int main(){
+  for(unsigned int x = 0; x <= (unsigned int) Vec.size()-3; x++){
+    std::cout << Vec[x] <<std::endl;
+  }
+  std::string str = "   ";
+  //std::cout << Vec;
+  return 0;
+>>>>>>> Stashed changes
 }
