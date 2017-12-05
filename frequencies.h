@@ -5,16 +5,22 @@
 #include <string>
 #include <vector>
 
-int Index(std::string tri);
+//Function for finding the frequencies
+vector<int> frequencies(std::string seq){
 
-/*
-creates an array...
+  /*
+  Making a Mini vector of the size of 19683 checking for spaces and trigrams
+  checks the trigram to find the index value
+  Returns the vector at the end of the Function
+  */
+}
 
-*/
 
-std::string frequencies(std::string seq);
+int main(int argc, char *argv[]){
 
-/*
-creates trigram and checks for frequencies
+  /*
+  A working main Function, throwing a error, and making the vector from the
+  function frequencies
+  */
 
-*/
+}
