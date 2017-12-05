@@ -8,11 +8,13 @@
 
 using namespace std;
 //Mikayla Gempp, Mason Perry
+//December 4 2017
 
-
+//Function for finding the frequencies
 vector<int> frequencies(std::string seq){
 int tri = 0; // THINK ABOUT MOVING THIS INSIDE THE FOR LOOP... TO RESET VALUE
   std::vector<int> miniVec(19682);
+  //Loop for finding the trigrams and inserting vector
   for(unsigned int x = 0; x < (unsigned int) seq.length()-2; x ++){
 
     //check for spaces.
@@ -30,15 +32,17 @@ int tri = 0; // THINK ABOUT MOVING THIS INSIDE THE FOR LOOP... TO RESET VALUE
       seq[x+2]= 96;
     }
 
-    //checks the trigram.
+    //checks the trigram to find tge index value
     else{
       tri += ((seq[x] - 96) * ((pow)(27,2)));
       tri += ((seq[x+1] - 96) * 27);
       tri += (seq[x+2] - 96);
     }
+    //using the index of tri, adds a counter for that trigram index in the vector
     std::cout<<"tri :"<<tri;
     miniVec[tri]+=1;
   }
+  //Returns the vector at the end of the Function
   return miniVec;
 }
 
@@ -49,7 +53,7 @@ int main(int argc, char *argv[]){
   }
   else {
     std::string str = argv[1];
-
+    //Makes the vector Vec from the function frequencies
     std::vector<int> Vec = frequencies(str);
     //std::string FinalStr;
     for(int x = 0; x <= ((int)Vec.size()-1); x++){
