@@ -1,3 +1,5 @@
+//Notes from Class.
+
 #include <cmath>
 
 double mean(std::vector<double> A){
@@ -21,3 +23,32 @@ double stddev(std::vector<double> A){
   }
   return sqrt(sum/((double)A.size()-1));
 }
+
+/*
+Abstraction:
+Classes
+Objects
+Polymorphism/Templates
+Recurrsion
+Enumeration
+Higher-Order Functions
+
+Final Review
+Binary math
+
+Pointers
+
+Draw a Picture of Memory
+
+int x = 3;
+int *y = &x;
+int *z = *y;
+
+Draw a box
+3 lives on top  (level A)
+A lives on next (level B)
+B lives on next (level C)
+
+
+
+*/
