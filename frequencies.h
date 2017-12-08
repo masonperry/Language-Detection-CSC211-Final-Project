@@ -20,7 +20,7 @@ vector<int> frequencies(std::string seq){
 int main(int argc, char *argv[]){
 
   /*
-  A working Main Function, throwing a error.
+  A working Main Function, open a the test file, throwing a fail error.
   Setting up the Vector
   */
 

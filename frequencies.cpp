@@ -8,6 +8,7 @@
 #include <vector>
 #include <fstream>
 #include <cmath>
+#include "languages.h"
 
 using namespace std;
 
@@ -37,46 +38,30 @@ vector<int> frequencies(std::string seq){
 
 int main(int argc, char *argv[]){
 
-  //Note: Devin said in office hours not to void arguments.
-  (void)argc;
-	string type = argv[1];
-	ifstream infile;
-	if (!infile.fail()){
-		infile.open("");
-		char ch;
-		string result = "";
-		if (type.compare("-e") == 0){
-			while (infile.get(ch)) {
-				char item = encrypt(ch, atoi(argv[2]));
-				result += item;
-			}
-		}
-		else if (type.compare("-d") == 0){
-			while (infile.get(ch)) {
-			char item = decrypt(ch, atoi(argv[2]));
-			result += item;
-		}
-		}
-			infile.close()
-	} else {
-		cerr << "Could not open file " << endl;
-		exit(EXIT_FAILURE);
-	}
-	ofstream outfile("".txt);
-	if (!outfile.fail()){
-		outfile << result;
-		outfile.close();
-	} else {
-		cerr << "Could not open file " << "".txt << endl;
-		exit(EXIT_FAILURE);
-	}
-  else {
+  //Open file
+  ifstream infile(argv[1]);
+  vector < string > langStr;
+  if (!infile.fail()){
+    string line;
+    while(getline(infile, line)){
+      langStr.push_back(line);
+    }
+    infile.close();
+  }
+  //Throw Errors!
+    else {
+    cerr << "Could not open file " << argv[1] << endl;
+    exit(EXIT_FAILURE);
+  }
     std::string str = argv[1];
     //Makes the vector Vec from the function frequencies
     std::vector<int> Vec = frequencies(str);
-  for(int x = 0; x <= (int)Vec.size()-1; x++){
-    std::cout << Vec[x] << " ";
-  }
+  //for(int x = 0; x <= (int)Vec.size()-1; x++){
+    //std::cout << Vec[x] << " ";
+  //}
+  unsigned long long num = mean(Vec, Vec);
+  unsigned long long denom1 = stddev(Vec);
+  unsigned long long denom2 = stddev2(Vec);
+  unsigned long long math = num/(denom1*denom2);
   std::cout << std::endl;
-  }
 }
