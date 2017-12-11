@@ -80,17 +80,6 @@ unsigned long long stddev2(std::vector<unsigned long long> B){
   unsigned long long denom2 = sqrt(sum/((unsigned long long)B.size()-1));
 }
 
-//Finds the Lanuguage that is the most similar to the text given
-std:: string LanguageFinal(std::vector<string> langStr, unsigned long long math){
-for(int k = 0; k < langStr.length(); k++){
-  std::string LangFin = langStr[0];
-  if(math > LangFin){
-    LangFin = langStr[i];
-    }
-  }
-return LangFin;
-}
-
 //Main
 int main(int argc, char *argv[]){
   //Open file
@@ -109,7 +98,10 @@ int main(int argc, char *argv[]){
     exit(EXIT_FAILURE);
   }
   std::string str = argv[1];
-  std::string similarities;
+  //FinalLang is the Language the text is most similar to
+  std::string FinalLang;
+  //Helps find the most simiilar
+  int FinalMath = 0;
   //Makes Vec vector
   std::vector<int> Vec = frequencies(str);
     //Goes though the languages to find similarities
@@ -124,9 +116,12 @@ int main(int argc, char *argv[]){
       unsigned long long denom2 = stddev2(Lang);
       //Finds the number of the similarity
       unsigned long long math = num/(denom1*denom2);
-      similarities += math;
+      if(math[i]> FinalMath){
+        FinalLang = langStr[i];
+      }
+      else{
+        finalLang = FinalLang;
+      }
     }
-    //Finds the Language it is most similar to
-    std::string LangFin = LanguageFinal(langStr, Lang);
   std::cout << std::endl;
 }
