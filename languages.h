@@ -1,6 +1,6 @@
 //Mikayla Gempp, Mason Perry
 //December 11, 2017
-
+/*
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -130,3 +130,4 @@ int main(int argc, char *argv[]){
     std::string LangFin = LanguageFinal(langStr, Lang);
   std::cout << std::endl;
 }
+*/

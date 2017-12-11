@@ -13,9 +13,9 @@
 using namespace std;
 
 //Function for finding the frequencies
-vector<int> frequencies(std::string seq){
+vector<unsigned long long> frequencies(std::string seq){
 
-  std::vector<int> miniVec(19683);
+  std::vector<unsigned long long> miniVec(19683);
   for(unsigned int x = 0; x < (unsigned int) seq.length()-2; x ++){
     int tri = 0;
 
@@ -28,56 +28,84 @@ vector<int> frequencies(std::string seq){
     else{tri += int ((seq[x+1] - 96) * 27);}
 
     //checks the trigram to find the index value
-    if (seq[x+2] == 32){seq[x+2] = 32;}
+    if (seq[x+2] == 32){ seq[x+2] = 32;}
     else{tri += int (seq[x+2] - 96);}
     miniVec[tri]+=1;
   }
+
   //Returns the vector at the end of the Function
   return miniVec;
 }
 
-//Yay Math!
 //The Numerator.
-unsigned long long mean(std::vector<unsigned long long> A, std::vector<unsigned long long> B){
-  unsigned long long sum = 0;
-  if (A.size() == 0){
+unsigned long long mean(std::vector < unsigned long long > A, std::vector< unsigned long long > B){
+  unsigned long long sumA = 0;
+  unsigned long long sumB = 0;
+  if (A.size() == 0) {
+    exit(EXIT_FAILURE);
     return 0;
   }
-  for(int i = 0; i < A.size(); i++){
-    sum += A[i];
+
+  for(unsigned long long i = 0; i < A.size(); i++) {
+    sumA += A[i];
   }
+
   if (B.size() == 0){
+    exit(EXIT_FAILURE);
      return 0;
    }
-  for(int i = 0; i < B.size(); i++){
-    sum += B[i];
+
+  for(unsigned long long i = 0; i < B.size(); i++) {
+    sumB += B[i];
   }
-  return (sum/(unsigned long long)A.size()-1) * (sum/(unsigned long long)B.size()-1);
-  unsigned long long num = (sum/(unsigned long long)A.size()-1) * (sum/(unsigned long long)B.size()-1);
+
+  return (sumA/(unsigned long long)A.size()-1) * (sumB/(unsigned long long)B.size()-1);
 }
 
 //The denominator part one.
-unsigned long long stddev(std::vector<unsigned long long> A){
-  unsigned long long sum = 0;
-  unsigned long long mean = mean(A);
-  if (A.size() <= 1) return 0;
-  for(unsigned long long a:A){
-    sum += pow(A-mean,2);
+unsigned long long stddev(std::vector< unsigned long long > A) {
+  unsigned long long FinSumA = 0;
+  unsigned long long sumA2 = 0;
+
+  if (A.size() == 0){
+    exit(EXIT_FAILURE);
+    return 0;
   }
-  return sqrt(sum/((unsigned long long)A.size()-1));
-  unsigned long long denom1 = sqrt(sum/((unsigned long long)A.size()-1));
+
+  for(unsigned long long i = 0; i < A.size(); i++) {
+    sumA2 += A[i];
+  }
+
+  if (A.size() <= 1) {
+    exit(EXIT_FAILURE);
+    return 0;
+  }
+
+  FinSumA += (sumA2 * sumA2);
+  return sqrt(FinSumA/((unsigned long long)A.size()-1));
 }
 
 //The denominator part two.
-unsigned long long stddev2(std::vector<unsigned long long> B){
-  unsigned long long sum = 0;
-  unsigned long long mean = mean(B);
-  if (B.size() <= 1) return 0;
-  for(unsigned long long b:B){
-    sum += pow(B-mean, 2);
+unsigned long long stddev2(std::vector< unsigned long long > B) {
+  unsigned long long FinSumB = 0;
+  unsigned long long sumB2 = 0;
+
+  if (B.size() == 0) {
+    exit(EXIT_FAILURE);
+     return 0;
+   }
+
+  for(unsigned long long i = 0; i < B.size(); i++) {
+    sumB2 += B[i];
   }
-  return sqrt(sum/((double)B.size()-1));
-  unsigned long long denom2 = sqrt(sum/((unsigned long long)B.size()-1));
+
+  if (B.size() <= 1) {
+    exit(EXIT_FAILURE);
+    return 0;
+  }
+
+  FinSumB += (sumB2 * sumB2);
+  return sqrt(FinSumB/((double)B.size()-1));
 }
 
 //Main
@@ -85,43 +113,60 @@ int main(int argc, char *argv[]){
   //Open file
   ifstream infile(argv[1]);
   vector < string > langStr;
+  std::string str;
   if (!infile.fail()){
     string line;
-    while(getline(infile, line)){
-      langStr.push_back(line);
+    //Creates string for languages in argv
+    for(int b = 1; b < argc-1; b++){
+      langStr.push_back(argv[b]);
     }
+    //Makes integer for length of argv
+    int argLen = argc;
+    //Creates a string for the test text
+    str += (argv[argLen-1]);
     infile.close();
   }
+
   //Throw Errors!
     else {
     cerr << "Could not open file " << argv[1] << endl;
     exit(EXIT_FAILURE);
   }
-  std::string str = argv[1];
+
   //FinalLang is the Language the text is most similar to
   std::string FinalLang;
+
   //Helps find the most simiilar
-  int FinalMath = 0;
-  //Makes Vec vector
-  std::vector<int> Vec = frequencies(str);
+  unsigned long long FinalMath = 0;
+
+  //Makes Vec the vector
+  std::vector< unsigned long long > Vec = frequencies(str);
+
     //Goes though the languages to find similarities
-    for(int a = 0; a < langStr.length(), a++){
+    for(int a = 0; a < int (langStr.size()); a++) {
+
       //Makes Lang Vector
-      std::vector<int> Lang = frequencies (langStr[a]);
-      //Finds numerator of sum
+      std::vector < unsigned long long > Lang = frequencies(langStr[a]);
+
+      //Finds numerator of sum.
       unsigned long long num = mean(Vec, Lang);
-      //Finds first denominator of sum
+
+      //Finds first denominator of sum.
       unsigned long long denom1 = stddev(Vec);
-      //Finds second denominator of sum
+
+      //Finds second denominator of sum.
       unsigned long long denom2 = stddev2(Lang);
+
       //Finds the number of the similarity
-      unsigned long long math = num/(denom1*denom2);
-      if(math[i]> FinalMath){
-        FinalLang = langStr[i];
+      unsigned long long math = num/(denom1 * denom2);
+      if(math > FinalMath) {
+        FinalLang = langStr[a];
       }
-      else{
-        finalLang = FinalLang;
+
+      else {
+        FinalLang = FinalLang;
       }
     }
-  std::cout << std::endl;
+  cout << FinalLang <<endl;
+  return 0;
 }
