@@ -1,5 +1,5 @@
 //Mikayla Gempp, Mason Perry
-//December 11, 2017
+//December 12, 2017
 
 #include <iostream>
 #include <ostream>
@@ -9,13 +9,12 @@
 #include <fstream>
 #include <cmath>
 
-
 using namespace std;
 
 //Function for finding the frequencies
 vector<unsigned long long> frequencies(std::string seq){
 
-  std::vector<unsigned long long> miniVec(19683);
+  std::vector<int> miniVec(19683);
   for(unsigned int x = 0; x < (unsigned int) seq.length()-2; x ++){
     int tri = 0;
 
@@ -28,7 +27,7 @@ vector<unsigned long long> frequencies(std::string seq){
     else{tri += int ((seq[x+1] - 96) * 27);}
 
     //checks the trigram to find the index value
-    if (seq[x+2] == 32){ seq[x+2] = 32;}
+    if (seq[x+2] == 32){seq[x+2] = 32;}
     else{tri += int (seq[x+2] - 96);}
     miniVec[tri]+=1;
   }
@@ -85,7 +84,6 @@ unsigned long long stddev2(std::vector< unsigned long long > B) {
   for(unsigned long long e = 0; e < B.size(); e++) {
     sumB2 += B[e]*B[e];
   }
-
 }
   return sqrt(sumB2);
 }
@@ -118,7 +116,7 @@ int main(int argc, char *argv[]){
   //FinalLang is the Language the text is most similar to
   std::string FinalLang;
 
-  //Helps find the most simiilar
+  //Helps find the most similar
   unsigned long long FinalMath = 0;
 
   //Makes Vec the vector
@@ -128,7 +126,7 @@ int main(int argc, char *argv[]){
     for(int a = 0; a < int (langStr.size()); a++) {
 
       //Makes Lang Vector
-      std::vector < unsigned long long > Lang = frequencies(langStr[a]);
+      std::vector < i > Lang = frequencies(langStr[a]);
 
       //Finds numerator of sum.
       unsigned long long num = Num(Vec, Lang);
