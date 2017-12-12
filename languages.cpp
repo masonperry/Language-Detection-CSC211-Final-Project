@@ -14,7 +14,7 @@ using namespace std;
 //Function for finding the frequencies
 vector<unsigned long long> frequencies(std::string seq){
 
-  std::vector<int> miniVec(19683);
+  std::vector<unsigned long long> miniVec(19683);
   for(unsigned int x = 0; x < (unsigned int) seq.length()-2; x ++){
     int tri = 0;
 
@@ -126,7 +126,7 @@ int main(int argc, char *argv[]){
     for(int a = 0; a < int (langStr.size()); a++) {
 
       //Makes Lang Vector
-      std::vector < i > Lang = frequencies(langStr[a]);
+      std::vector < unsigned long long > Lang = frequencies(langStr[a]);
 
       //Finds numerator of sum.
       unsigned long long num = Num(Vec, Lang);
