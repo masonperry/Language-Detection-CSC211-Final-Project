@@ -90,57 +90,68 @@ unsigned long long stddev2(std::vector< unsigned long long > B) {
 
 //Main
 int main(int argc, char *argv[]){
-  //Open file
-  ifstream infile(argv[1]);
   vector < string > langStr;
   std::string str;
-  if (!infile.fail()){
-    string line;
-    //Creates string for languages in argv
-    for(int b = 1; b < argc-1; b++){
-      langStr.push_back(argv[b]);
-    }
-    //Makes integer for length of argv
-    int argLen = argc;
-    //Creates a string for the test text
-    str += (argv[argLen-1]);
-    infile.close();
-  }
-
-  //Throw Errors!
-    else {
-    cerr << "Could not open file " << argv[1] << endl;
+  if (argc < 3){
+    cerr<<"Please provide mulitple languages"<< endl;
     exit(EXIT_FAILURE);
   }
+  else{
+    for(int m = 1; m < argc; m++){
+  //Open file
+    ifstream infile(argv[m]);
+    if (!infile.fail()){
+      string line;
+    //Creates string for languages in argv
+      langStr.push_back(argv[m]);
 
+      infile.close();
+    }
+  //Throw Errors!
+    else {
+    cerr << "Could not open file " << argv[m] << endl;
+    exit(EXIT_FAILURE);
+  }
+}
+  langStr.pop_back();
+//Makes integer for length of argv
+  int argLen = argc;
+//Creates a string for the test text
+  str += (argv[argLen-1]);
   //FinalLang is the Language the text is most similar to
+<<<<<<< HEAD
   std::string FinalLang;
 
   //Helps find the most similar
+=======
+  std::string FinalLang = langStr[0];
+  //Helps find the most simiilar
+>>>>>>> master
   unsigned long long FinalMath = 0;
-
   //Makes Vec the vector
   std::vector< unsigned long long > Vec = frequencies(str);
+<<<<<<< HEAD
 
     //Goes though the languages to find similarities.
     for(int a = 0; a < int (langStr.size()); a++) {
 
+=======
+    //Goes though the languages to find similarities
+    for(unsigned long long a = 0; a < langStr.size(); a++) {
+>>>>>>> master
       //Makes Lang Vector
       std::vector < unsigned long long > Lang = frequencies(langStr[a]);
-
       //Finds numerator of sum.
       unsigned long long num = Num(Vec, Lang);
-
       //Finds first denominator of sum.
       unsigned long long denom1 = stddev(Vec);
-
       //Finds second denominator of sum.
       unsigned long long denom2 = stddev2(Lang);
-
       //Finds the number of the similarity
       unsigned long long math = num/(denom1 * denom2);
       if(math > FinalMath) {
         FinalLang = langStr[a];
+        FinalMath = math;
       }
       else {
         FinalLang = FinalLang;
@@ -148,4 +159,5 @@ int main(int argc, char *argv[]){
     }
   cout << FinalLang <<endl;
   return 0;
+}
 }
