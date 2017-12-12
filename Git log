@@ -1,0 +1,29 @@
+Last login: Tue Dec 12 12:46:20 on ttys001
+Masons-MBP-2:~ masonperry$ d211
+student@c27bcb21cf42:~$ cd data
+student@c27bcb21cf42:~/data$ cd Final
+student@c27bcb21cf42:~/data/Final$ git log
+commit 0df2ea4f5e58873d553623d0739619cdbee8186d
+Author: Mason <mason_perry@my.uri.edu>
+Date:   Tue Dec 12 12:48:53 2017 -0500
+
+    pulled/pushed
+
+commit fcd88c78a5ca7eece5d179d0858f066f8828da00
+Author: Unknown <mikaylag98@my.uri.edu>
+Date:   Tue Dec 12 12:37:12 2017 -0500
+
+    FINSIHED MILESTONE TWO
+    
+    All errors fixed, code works on various languages.
+
+commit 4a2333d25647f5b80a27bbb66230fe339feba47b
+Author: Mason <mason_perry@my.uri.edu>
+Date:   Mon Dec 11 18:14:45 2017 -0500
+
+    Auto stash before merge of "master" and "origin/master"
+
+commit 1587b6704cbf849d63d4a34eaeedbf7db4d2cd9d
+Author: Unknown <mikaylag98@my.uri.edu>
+Date:   Sun Dec 10 22:28:05 2017 -0500
+:

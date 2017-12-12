@@ -122,7 +122,7 @@ int main(int argc, char *argv[]){
   //Makes Vec the vector
   std::vector< unsigned long long > Vec = frequencies(str);
 
-    //Goes though the languages to find similarities
+    //Goes though the languages to find similarities.
     for(int a = 0; a < int (langStr.size()); a++) {
 
       //Makes Lang Vector
@@ -142,7 +142,6 @@ int main(int argc, char *argv[]){
       if(math > FinalMath) {
         FinalLang = langStr[a];
       }
-
       else {
         FinalLang = FinalLang;
       }
