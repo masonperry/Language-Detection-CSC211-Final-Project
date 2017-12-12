@@ -8,7 +8,7 @@
 #include <vector>
 #include <fstream>
 #include <cmath>
-#include "languages.h"
+
 
 using namespace std;
 
@@ -38,74 +38,56 @@ vector<unsigned long long> frequencies(std::string seq){
 }
 
 //The Numerator.
-unsigned long long mean(std::vector < unsigned long long > A, std::vector< unsigned long long > B){
-  unsigned long long sumA = 0;
-  unsigned long long sumB = 0;
-  if (A.size() == 0) {
-    exit(EXIT_FAILURE);
-    return 0;
-  }
-
-  for(unsigned long long i = 0; i < A.size(); i++) {
-    sumA += A[i];
-  }
-
-  if (B.size() == 0){
-    exit(EXIT_FAILURE);
-     return 0;
-   }
-
-  for(unsigned long long i = 0; i < B.size(); i++) {
-    sumB += B[i];
-  }
-
-  return (sumA/(unsigned long long)A.size()-1) * (sumB/(unsigned long long)B.size()-1);
-}
-
-//The denominator part one.
-unsigned long long stddev(std::vector< unsigned long long > A) {
-  unsigned long long FinSumA = 0;
-  unsigned long long sumA2 = 0;
-
-  if (A.size() == 0){
-    exit(EXIT_FAILURE);
-    return 0;
-  }
-
-  for(unsigned long long i = 0; i < A.size(); i++) {
-    sumA2 += A[i];
-  }
-
+unsigned long long Num(std::vector < unsigned long long > A, std::vector< unsigned long long > B){
+  unsigned long long sum = 0;
   if (A.size() <= 1) {
     exit(EXIT_FAILURE);
     return 0;
   }
-
-  FinSumA += (sumA2 * sumA2);
-  return sqrt(FinSumA/((unsigned long long)A.size()-1));
+else if (B.size() <= 1){
+  exit(EXIT_FAILURE);
+  return 0;
+}
+else{
+  for(unsigned long long i = 0; i < A.size(); i++) {
+    sum += A[i]*B[i];
+  }
+}
+  return sum;
 }
 
-//The denominator part two.
-unsigned long long stddev2(std::vector< unsigned long long > B) {
-  unsigned long long FinSumB = 0;
-  unsigned long long sumB2 = 0;
+//The denominator part one.
+unsigned long long stddev(std::vector< unsigned long long > A) {
+  unsigned long long sumA2 = 0;
 
-  if (B.size() == 0) {
-    exit(EXIT_FAILURE);
-     return 0;
-   }
-
-  for(unsigned long long i = 0; i < B.size(); i++) {
-    sumB2 += B[i];
-  }
-
-  if (B.size() <= 1) {
+  if (A.size() <= 1){
     exit(EXIT_FAILURE);
     return 0;
   }
 
-  FinSumB += (sumB2 * sumB2);
-  return sqrt(FinSumB/((double)B.size()-1));
+  else{
+  for(unsigned long long d = 0; d < A.size(); d++) {
+    sumA2 += A[d]  * A[d];
+  }
+}
+  return sqrt(sumA2);
+}
+
+//The denominator part two.
+unsigned long long stddev2(std::vector< unsigned long long > B) {
+  unsigned long long sumB2 = 0;
+
+  if (B.size() <= 1) {
+    exit(EXIT_FAILURE);
+     return 0;
+   }
+   else{
+  for(unsigned long long e = 0; e < B.size(); e++) {
+    sumB2 += B[e]*B[e];
+  }
+
+}
+  return sqrt(sumB2);
 }
 
 //Main
@@ -149,7 +131,7 @@ int main(int argc, char *argv[]){
       std::vector < unsigned long long > Lang = frequencies(langStr[a]);
 
       //Finds numerator of sum.
-      unsigned long long num = mean(Vec, Lang);
+      unsigned long long num = Num(Vec, Lang);
 
       //Finds first denominator of sum.
       unsigned long long denom1 = stddev(Vec);
