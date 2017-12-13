@@ -35,6 +35,7 @@ vector< unsigned long long> frequencies(std::string seq){
   return miniVec;
 }
 
+
 //The Numerator.
 unsigned long long Num(std::vector < unsigned long long > A, std::vector< unsigned long long > B){
   unsigned long long sum = 0;
@@ -52,6 +53,7 @@ else{
   }
 }
   return sum;
+  std::cout << sum <<endl;
 }
 
 //The denominator part one.
@@ -66,6 +68,7 @@ unsigned long long stddev(std::vector< unsigned long long > A) {
   }
 }
   return sqrt(sumA2);
+  std::cout << sqrt(sumA2) <<endl;
 }
 
 //The denominator part two.
@@ -81,6 +84,7 @@ unsigned long long stddev2(std::vector< unsigned long long > B) {
   }
 }
   return sqrt(sumB2);
+  std::cout << sqrt(sumB2) <<endl;
 }
 
 //Main
@@ -113,8 +117,6 @@ int main(int argc, char *argv[]){
   str += (argv[argLen-1]);
   //FinalLang is the Language the text is most similar to
 
-  //std::string FinalLang;
-
   //Helps find the most similar
   std::string FinalLang = langStr[0];
 
@@ -128,12 +130,16 @@ int main(int argc, char *argv[]){
       std::vector < unsigned long long > Lang = frequencies(langStr[a]);
       //Finds numerator of sum.
       unsigned long long num = Num(Vec, Lang);
-      //Finds first denominator of sum.
+      std::cout << num <<endl;
+      //Finds first denominator of sumA.
       unsigned long long denom1 = stddev(Vec);
-      //Finds second denominator of sum.
+      std::cout << denom1 <<endl;
+      //Finds second denominator of sumB.
       unsigned long long denom2 = stddev2(Lang);
+      std::cout << denom2 <<endl;
       //Finds the number of the similarity
       unsigned long long math = num/(denom1 * denom2);
+      std::cout << math <<endl;
       if(math > FinalMath) {
         FinalLang = langStr[a];
         FinalMath = math;
@@ -142,7 +148,7 @@ int main(int argc, char *argv[]){
         FinalLang = FinalLang;
       }
     }
-  cout << FinalLang <<endl;
+  std::cout << FinalLang <<endl;
   return 0;
 }
 }
