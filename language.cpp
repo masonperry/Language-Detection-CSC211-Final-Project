@@ -19,16 +19,20 @@ vector< unsigned long long> frequencies(std::string seq){
     int tri = 0;
 
     //check for spaces.
-    if (seq[x] == 32){seq[x] = 32;}
-    else{tri += int ((seq[x] - 96) * (27 * 27));}
-
+    if (seq[x] == 32){
+      seq[x] = 32;
+    }
     //checks for Spaces.
-    if (seq[x+1] == 32){seq[x+1]= 32;}
-    else{tri += int ((seq[x+1] - 96) * 27);}
-
-    //checks the trigram to find the index value
-    if (seq[x+2] == 32){seq[x+2] = 32;}
-    else{tri += int (seq[x+2] - 96);}
+    else if (seq[x+1] == 32){
+      seq[x+1]= 32;
+    }
+    else if (seq[x+2] == 32){
+      seq[x+2] = 32;
+    }
+    else{
+      //makes the trigram
+      tri += int (((seq[x] - 96) * (27 * 27))+((seq[x+1] - 96) * 27)+(seq[x+2] - 96));
+    }
     miniVec[tri]+=1;
   }
   //Returns the vector at the end of the Function
@@ -49,11 +53,10 @@ else if (B.size() <= 1){
 }
 else{
   for(unsigned long long i = 0; i < A.size(); i++) {
-    sum += A[i]*B[i];
+    sum += (A[i]*B[i]);
   }
 }
   return sum;
-  std::cout << sum <<endl;
 }
 
 //The denominator part one.
@@ -62,13 +65,13 @@ unsigned long long stddev(std::vector< unsigned long long > A) {
   if (A.size() <= 1){
     exit(EXIT_FAILURE);
     return 0;
-  } else {
+  }
+  else {
   for(unsigned long long d = 0; d < A.size(); d++) {
-    sumA2 += A[d] * A[d];
+    sumA2 += (A[d] * A[d]);
   }
 }
   return sqrt(sumA2);
-  std::cout << sqrt(sumA2) <<endl;
 }
 
 //The denominator part two.
@@ -80,11 +83,10 @@ unsigned long long stddev2(std::vector< unsigned long long > B) {
      return 0;
    } else {
   for(unsigned long long e = 0; e < B.size(); e++) {
-    sumB2 += B[e]*B[e];
+    sumB2 += (B[e]*B[e]);
   }
 }
   return sqrt(sumB2);
-  std::cout << sqrt(sumB2) <<endl;
 }
 
 //Main
@@ -94,7 +96,8 @@ int main(int argc, char *argv[]){
   if (argc < 3){
     cerr<<"Please provide mulitple languages"<< endl;
     exit(EXIT_FAILURE);
-  } else {
+  }
+  else {
     for(int m = 1; m < argc; m++){
   //Open file
     ifstream infile(argv[m]);
@@ -104,7 +107,8 @@ int main(int argc, char *argv[]){
       langStr.push_back(argv[m]);
       infile.close();
     //Throw Errors!
-    } else {
+    }
+    else {
     cerr << "Could not open file " << argv[m] << endl;
     exit(EXIT_FAILURE);
   }
@@ -116,10 +120,8 @@ int main(int argc, char *argv[]){
 //Creates a string for the test text
   str += (argv[argLen-1]);
   //FinalLang is the Language the text is most similar to
-
-  //Helps find the most similar
   std::string FinalLang = langStr[0];
-
+  //Helps find the most similar
   unsigned long long FinalMath = 0;
   //Makes Vec the vector
   std::vector< unsigned long long > Vec = frequencies(str);
@@ -130,16 +132,12 @@ int main(int argc, char *argv[]){
       std::vector < unsigned long long > Lang = frequencies(langStr[a]);
       //Finds numerator of sum.
       unsigned long long num = Num(Vec, Lang);
-      std::cout << num <<endl;
       //Finds first denominator of sumA.
       unsigned long long denom1 = stddev(Vec);
-      std::cout << denom1 <<endl;
       //Finds second denominator of sumB.
       unsigned long long denom2 = stddev2(Lang);
-      std::cout << denom2 <<endl;
       //Finds the number of the similarity
       unsigned long long math = num/(denom1 * denom2);
-      std::cout << math <<endl;
       if(math > FinalMath) {
         FinalLang = langStr[a];
         FinalMath = math;
