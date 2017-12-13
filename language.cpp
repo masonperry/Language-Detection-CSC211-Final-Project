@@ -20,7 +20,7 @@ vector< unsigned long long> frequencies(std::string seq){
 
     //check for spaces.
     if (seq[x] == 32){seq[x] = 32;}
-    else{tri += int ((seq[x] - 96) * (pow)27,2));}
+    else{tri += int ((seq[x] - 96) * (27 * 27));}
 
     //checks for Spaces.
     if (seq[x+1] == 32){seq[x+1]= 32;}
@@ -113,17 +113,17 @@ int main(int argc, char *argv[]){
   str += (argv[argLen-1]);
   //FinalLang is the Language the text is most similar to
 
-  std::string FinalLang;
+  //std::string FinalLang;
 
   //Helps find the most similar
   std::string FinalLang = langStr[0];
 
   unsigned long long FinalMath = 0;
   //Makes Vec the vector
-  std::vector< int > Vec = frequencies(str);
+  std::vector< unsigned long long > Vec = frequencies(str);
 
     //Goes though the languages to find similarities
-    for(int a = 0; a < langStr.size(); a++) {
+    for(unsigned long long a = 0; a < langStr.size(); a++) {
       //Makes Lang Vector
       std::vector < unsigned long long > Lang = frequencies(langStr[a]);
       //Finds numerator of sum.

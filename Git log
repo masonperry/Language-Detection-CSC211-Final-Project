@@ -1,8 +1,88 @@
-Last login: Tue Dec 12 12:46:20 on ttys001
-Masons-MBP-2:~ masonperry$ d211
-student@c27bcb21cf42:~$ cd data
-student@c27bcb21cf42:~/data$ cd Final
-student@c27bcb21cf42:~/data/Final$ git log
+                                              ^
+language.cpp:23:21: note: to match this '('
+    else{tri += int ((seq[x] - 96) * (27 * 27);}
+                    ^
+1 error generated.
+student@42cf745cc057:~/data/Final$ ./compile
+language.cpp:119:15: fatal error: redefinition of 'FinalLang'
+  std::string FinalLang = langStr[0];
+              ^
+language.cpp:116:15: note: previous definition is here
+  std::string FinalLang;
+              ^
+1 error generated.
+student@42cf745cc057:~/data/Final$ ./compile
+language.cpp:123:22: fatal error: no viable conversion from 'vector<unsigned
+      long long>' to 'vector<int>'
+  std::vector< int > Vec = frequencies(str);
+                     ^     ~~~~~~~~~~~~~~~~
+/usr/bin/../lib/gcc/x86_64-linux-gnu/5.4.0/../../../../include/c++/5.4.0/bits/stl_vector.h:318:7: note: 
+      candidate constructor not viable: no known conversion from
+      'vector<unsigned long long>' to 'const std::vector<int,
+      std::allocator<int> > &' for 1st argument
+      vector(const vector& __x)
+      ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/5.4.0/../../../../include/c++/5.4.0/bits/stl_vector.h:335:7: note: 
+      candidate constructor not viable: no known conversion from
+      'vector<unsigned long long>' to
+      'std::vector<int, std::allocator<int> > &&' for 1st argument
+      vector(vector&& __x) noexcept
+      ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/5.4.0/../../../../include/c++/5.4.0/bits/stl_vector.h:373:7: note: 
+      candidate constructor not viable: no known conversion from
+      'vector<unsigned long long>' to 'initializer_list<value_type>' (aka
+      'initializer_list<int>') for 1st argument
+      vector(initializer_list<value_type> __l,
+      ^
+1 error generated.
+student@42cf745cc057:~/data/Final$ ./compile
+language.cpp:126:22: fatal error: comparison of integers of different signs:
+      'int' and 'size_type' (aka 'unsigned long') [-Wsign-compare]
+    for(int a = 0; a < langStr.size(); a++) {
+                   ~ ^ ~~~~~~~~~~~~~~
+1 error generated.
+student@42cf745cc057:~/data/Final$ clear
+
+student@42cf745cc057:~/data/Final$ ./language welsh french italian english spanish german
+welsh
+student@42cf745cc057:~/data/Final$ git log
+commit 77f0e66e634ffb951513dbd9c51c762e706e118f
+Author: Mason <mason_perry@my.uri.edu>
+Date:   Tue Dec 12 19:11:56 2017 -0500
+
+    tried to find segmentation fault
+    
+    and compile isn't working.
+
+commit 0514aa9b09abad49f54598b6aa2efe8d7a1ea53e
+Merge: e8a348c ab0fd3b
+Author: Mason <mason_perry@my.uri.edu>
+Date:   Tue Dec 12 14:07:34 2017 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit ab0fd3b17b7239b5b7d40bb70d6e588adc882ed0
+Author: Unknown <mikaylag98@my.uri.edu>
+Date:   Tue Dec 12 13:59:31 2017 -0500
+
+    Fixed Changes
+    
+    Fixed errors, did different loops to look for errors of all files.
+
+commit e8a348cfbe2c631ea385765193bfefb3c27eb6a6
+Author: Mason <mason_perry@my.uri.edu>
+Date:   Tue Dec 12 13:23:59 2017 -0500
+
+    I changed something in the code
+    
+    Take a look at lines 17 and 129.
+
+commit 77914904063502de9c11d6964663bf0467d2301e
+Author: Mason <mason_perry@my.uri.edu>
+Date:   Tue Dec 12 12:59:48 2017 -0500
+
+    find errors
+
 commit 0df2ea4f5e58873d553623d0739619cdbee8186d
 Author: Mason <mason_perry@my.uri.edu>
 Date:   Tue Dec 12 12:48:53 2017 -0500
@@ -13,17 +93,4 @@ commit fcd88c78a5ca7eece5d179d0858f066f8828da00
 Author: Unknown <mikaylag98@my.uri.edu>
 Date:   Tue Dec 12 12:37:12 2017 -0500
 
-    FINSIHED MILESTONE TWO
-    
-    All errors fixed, code works on various languages.
-
-commit 4a2333d25647f5b80a27bbb66230fe339feba47b
-Author: Mason <mason_perry@my.uri.edu>
-Date:   Mon Dec 11 18:14:45 2017 -0500
-
-    Auto stash before merge of "master" and "origin/master"
-
-commit 1587b6704cbf849d63d4a34eaeedbf7db4d2cd9d
-Author: Unknown <mikaylag98@my.uri.edu>
-Date:   Sun Dec 10 22:28:05 2017 -0500
 :
