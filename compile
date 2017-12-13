@@ -13,4 +13,4 @@ rm -f *.o
 
 # compile
 
-$CPP $FLAGS -o languages languages.cpp
+$CPP $FLAGS -o language language.cpp
