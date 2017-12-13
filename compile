@@ -13,4 +13,8 @@ rm -f *.o
 
 # compile
 
+<<<<<<< HEAD
 $CPP $FLAGS -o language languages.cpp
+=======
+$CPP $FLAGS -o language language.cpp
+>>>>>>> master
